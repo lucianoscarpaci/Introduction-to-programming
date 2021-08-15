@@ -1,0 +1,107 @@
+/*
+COP 2220 Lab 2: User-defined functions
+Date 2/11/2021
+Purpose - User-defined functions, function prototypes and function calls
+Author: Luciano Scarpaci
+*/
+
+#include <stdio.h>
+#define RATE_PER_MILE 0.35
+#include <math.h>
+
+//Function Prototypes (ensure names are relevant)
+
+/* Function that calculates the difference in the number of miles traveled. 
+(begin and end odom reading)*/
+double mileDif(double begMile, double endMile);
+
+/*Function that uses the number of miles traveled to calculate the value of 
+reinbursement*/
+double calcReimbursement(double milesTraveled);
+
+/*Function that calculates the MPG (miles/gallon)*/
+double calcMPG(double milesTraveled, double galConsumed);
+
+/*Simple display function to print the data we have calculated so far*/
+void printResults(double milesTraveled, double reinbursement, double MPG);
+
+int main()
+{
+    double begRead, endRead, begMile, endMile;
+    double milesTraveled, galConsumed, reimbursement, MPG;
+    printf("MILEAGE REIMBURSEMENT AND MPG CALCULATOR\n");
+    printf("Enter beginning odometer reading => ");
+    scanf("%lf", &begRead);
+
+    printf("Enter ending odometer reading => ");
+    scanf("%lf", &endRead);
+
+    printf("Enter gallons of gas consumed => ");
+    scanf("%lf", &galConsumed);
+    /* Use function calls to calculate the miles travelled, reimbursement
+    * value and MPG of the vehicle.
+    */
+   mileDif(begMile, endMile);
+   calcReimbursement(milesTraveled);
+   calcMPG(milesTraveled, galConsumed);
+   // Use the fourth function to display the information
+   printResults(milesTraveled, reimbursement, MPG);
+
+   return 0;
+    
+
+}
+
+//Function 1 the function should accept two double types and return 
+// the difference of the two values.
+// begMile 1 endMile 2
+double mileDif(double begMile, double endMile)
+{
+    
+    double difference;
+    difference = (fabs(begMile - endMile));
+    //returning the difference
+    return difference;
+
+}
+//Function 2 function take the miles traveled and calculates the 
+// reimbursement amount based on the reimbursement rate of 0.35 /mile.
+    
+double calcReimbursement(double milesTraveled)
+{
+    
+    double reimbursementAmount = (milesTraveled * RATE_PER_MILE);
+    //returning the reimbursement amount
+    return reimbursementAmount;
+}
+//Function 3 definition the function should take the miles travelled 
+//and number of gallons of gas consumed and return the gas consumption
+//of the vehicle in miles per gallon (mpg).
+double calcMPG(double milesTraveled, double galConsumed)
+{
+    double totalGasConsumption;
+    totalGasConsumption = (milesTraveled / galConsumed);
+    //returning the gas consumption of the vehicle
+    return totalGasConsumption;
+}
+//Function 4 defintion The function should print 3 inputs as follows
+/* You traveled 305.4 miles. At $0.35 per mile, your reinbursement is
+* $106.89.
+* Your vehicle gas consumption is : 25.5 mpg
+* */
+void printResults(double milesTraveled, double reinbursement, double MPG)
+{
+    printf("You traveled %lf miles. At $0.35 per mile,\n", endRead-begRead, (endRead-begRead * 0.35));
+    printf("your reimbursement is $%lf.\n", calcReimbursement);
+    printf("Your vehicle gas consumption is: %lf MPG\n", calcMPG);
+
+}
+
+
+
+
+
+
+
+
+    
